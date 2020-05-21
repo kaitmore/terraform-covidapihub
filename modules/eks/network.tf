@@ -27,9 +27,10 @@ resource "aws_subnet" "worker" {
 
   count = length(var.availability_zones)
 
-  vpc_id            = aws_vpc.cluster.id
-  cidr_block        = cidrsubnet(var.cidr_block, ceil(log(length(var.availability_zones) * 2, 2)), length(var.availability_zones) + count.index)
-  availability_zone = var.availability_zones[count.index % length(var.availability_zones)]
+  vpc_id                  = aws_vpc.cluster.id
+  cidr_block              = cidrsubnet(var.cidr_block, ceil(log(length(var.availability_zones) * 2, 2)), length(var.availability_zones) + count.index)
+  availability_zone       = var.availability_zones[count.index % length(var.availability_zones)]
+  map_public_ip_on_launch = true
 
   tags = {
     Name                                        = "eks-${var.cluster_name}"
