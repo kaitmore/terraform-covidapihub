@@ -12,14 +12,6 @@ module "eks" {
   cidr_block   = "10.0.0.0/16"
 
   worker_groups = {
-
-    general = {
-      instance_type = "m4.xlarge"
-      desired_size  = 3
-      minimum_size  = 3
-      maximum_size  = 3
-    }
-
     m5-general = {
       instance_type = "m5.xlarge"
       desired_size  = 6
