@@ -8,5 +8,6 @@ module "github" {
 
   repositories = [
     "datasource-inshift",
+    "terraform-covidapihub",
   ]
 }

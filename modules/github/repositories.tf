@@ -15,7 +15,7 @@ resource "github_repository" "repository" {
   has_projects       = false
   has_wiki           = false
   topics             = []
-  auto_init          = true
+  auto_init          = false
 }
 
 resource "github_branch_protection" "master" {
