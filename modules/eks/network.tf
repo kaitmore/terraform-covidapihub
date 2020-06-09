@@ -79,3 +79,16 @@ resource "aws_route_table_association" "worker-egress" {
   subnet_id      = aws_subnet.worker[count.index].id
   route_table_id = aws_route_table.egress.id
 }
+
+resource "aws_network_interface" "proxy-nlb-master-nic" {
+  subnet_id   = aws_subnet.master.id
+}
+
+resource "aws_eip" "nlb-eip-master" {
+  vpc                       = true
+  public_ipv4_pool          = "amazon"
+  network_interface         = aws_network_interface.proxy-nlb-master-nic.id
+  tags = {
+    Name = "proxy-nlb-eip-master"
+  }
+}
