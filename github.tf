@@ -6,6 +6,13 @@ module "github" {
     "kaitmore",
   ]
 
+  collaborators = [
+    "chrisbsmith",
+    "kaitmore",
+    "hiromis",
+    "dontlaugh"
+  ]
+
   repositories = [
     "datasource-inshift",
     "terraform-covidapihub",

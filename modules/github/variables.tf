@@ -9,3 +9,9 @@ variable "repositories" {
   description = "The repositories in the organization."
   type        = set(string)
 }
+
+variable "collaborators" {
+  default     = []
+  description = "The collaborators in the organization."
+  type        = set(string)
+}
