@@ -4,5 +4,4 @@ resource "github_membership" "member" {
 
   role     = "member"
   username = each.value
-
 }
