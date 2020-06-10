@@ -1,9 +1,14 @@
 module "github" {
   source = "./modules/github"
 
-  members = [
+  administrators = [
     "chrisbsmith",
     "kaitmore",
+  ]
+
+  members = [
+    "dontlaugh",
+    "hiromis",
   ]
 
   repositories = [
