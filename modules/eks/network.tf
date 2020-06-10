@@ -81,7 +81,7 @@ resource "aws_route_table_association" "worker-egress" {
 }
 
 resource "aws_network_interface" "proxy-nlb-master-nic" {
-  subnet_id   = aws_subnet.master.id
+  subnet_id   = aws_subnet.master[0].id
 }
 
 resource "aws_eip" "nlb-eip-master" {
