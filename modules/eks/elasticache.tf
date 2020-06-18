@@ -7,8 +7,13 @@ resource "aws_elasticache_cluster" "novelcovid_redis" {
   parameter_group_name = "default.redis3.2"
   engine_version       = "3.2.10"
   port                 = 6379
-  subnet_group_name    = aws_subnet.master[0].id
+  subnet_group_name    = aws_elasticache_subnet_group.novelcovid_redis_subnet_group.name
   security_group_ids   = [aws_security_group.novelcovid_redis_sg.id]
+}
+
+resource "aws_elasticache_subnet_group" "novelcovid_redis_subnet_group" {
+  name       = "novelcovid_redis_subnet_group"
+  subnet_ids = [aws_subnet.master[0].id]
   depends_on = [
     aws_subnet.master
   ]
