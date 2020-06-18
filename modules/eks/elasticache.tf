@@ -8,6 +8,7 @@ resource "aws_elasticache_cluster" "novelcovid_redis" {
   engine_version       = "3.2.10"
   port                 = 6379
   subnet_group_name    = aws_subnet.master[0].id
+  security_group_ids   = [aws_security_group.novelcovid_redis_sg.id]
   depends_on = [
     aws_subnet.master
   ]
@@ -21,3 +22,27 @@ output "novelcovid_cache_nodes" {
   value = aws_elasticache_cluster.novelcovid_redis.cache_nodes
 }
 
+resource "aws_security_group" "novelcovid_redis_sg" {
+  name        = "novelcovid_redis_sg"
+  description = "Elasticache redis to cluster"
+  vpc_id      = aws_vpc.cluster.id
+
+  ingress {
+    description = "Inbound from VPC"
+    from_port   = 6379
+    to_port     = 6379
+    protocol    = "tcp"
+    cidr_blocks = [aws_vpc.cluster.cidr_block]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "novelcovid_redis_sg"
+  }
+}
