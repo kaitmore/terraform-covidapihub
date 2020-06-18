@@ -12,7 +12,7 @@ resource "aws_elasticache_cluster" "novelcovid_redis" {
 }
 
 resource "aws_elasticache_subnet_group" "novelcovid_redis_subnet_group" {
-  name       = "novelcovid_redis_subnet_group"
+  name       = "novelcovid-redis-subnet-group"
   subnet_ids = [aws_subnet.master[0].id]
   depends_on = [
     aws_subnet.master
