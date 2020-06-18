@@ -7,6 +7,10 @@ resource "aws_elasticache_cluster" "novelcovid_redis" {
   parameter_group_name = "default.redis3.2"
   engine_version       = "3.2.10"
   port                 = 6379
+  subnet_group_name    = aws_subnet.master[0].id
+  depends_on = [
+    aws_subnet.master
+  ]
 }
 
 output "novelcovid_azs" {
