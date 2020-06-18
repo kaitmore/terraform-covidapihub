@@ -14,9 +14,9 @@ module "eks" {
   worker_groups = {
     m5-general = {
       instance_type = "m5.xlarge"
-      desired_size  = 8
-      minimum_size  = 8
-      maximum_size  = 8
+      desired_size  = 9
+      minimum_size  = 9
+      maximum_size  = 9
     }
   }
 }
