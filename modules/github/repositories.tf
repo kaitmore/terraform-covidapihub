@@ -24,11 +24,11 @@ resource "github_branch_protection" "master" {
 
   repository     = each.value
   branch         = "master"
-  enforce_admins = true
+  enforce_admins = false
 
   required_pull_request_reviews {
-    dismiss_stale_reviews           = true
-    require_code_owner_reviews      = true
+    dismiss_stale_reviews           = false
+    require_code_owner_reviews      = false
     required_approving_review_count = 1
   }
 }
