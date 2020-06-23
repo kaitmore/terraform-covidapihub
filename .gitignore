@@ -1,0 +1,8 @@
+# editors
+.idea
+
+# generated files
+.terraform
+*.tfstate
+*.out
+

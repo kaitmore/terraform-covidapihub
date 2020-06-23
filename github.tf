@@ -4,6 +4,7 @@ module "github" {
   administrators = [
     "chrisbsmith",
     "kaitmore",
+    "dontlaugh",
   ]
 
   members = [
